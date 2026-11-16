@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./TaskForm.css";
 import Tag from './Tag';
 
-const TaskForm = () => {
+const TaskForm = ({setTasks}) => {
 
   //one single handlefunction for multiple input fields
   const [taskData, setTaskData] = useState({
@@ -10,6 +10,10 @@ const TaskForm = () => {
     status: 'todo',
     tags: []
   });
+
+  const checkTag = (tag) => {
+    return taskData.tags.some(item => item === tag)
+  }
 
   const selectTag = (tag) => {
     if (taskData.tags.some(item => item === tag)) {
@@ -24,7 +28,6 @@ const TaskForm = () => {
 
     }
   };
-console.log(taskData.tags);
 
   const HandleChange = (e) => {
     const { name, value } = e.target
@@ -39,7 +42,15 @@ console.log(taskData.tags);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(taskData);
-  }
+    setTasks(prev => {
+      return [...prev, taskData]
+    })
+    setTaskData({
+      task: '',
+      status: 'todo',
+      tags: []
+    })
+  };
 
 
   return (
@@ -55,10 +66,10 @@ console.log(taskData.tags);
 
         <div className="task_From_bottom_line">
           <div>
-            <Tag tagname="HTML"  selectTag = {selectTag} />
-            <Tag tagname="CSS" selectTag = {selectTag} />
-            <Tag tagname="Javascript" selectTag = {selectTag} />
-            <Tag tagname="React"  selectTag = {selectTag}/>
+            <Tag tagname="HTML"  selectTag = {selectTag} selected = {checkTag('HTML')} />
+            <Tag tagname="CSS" selectTag = {selectTag} selected = {checkTag('CSS')} />
+            <Tag tagname="Javascript" selectTag = {selectTag} selected = {checkTag('Javascript')} />
+            <Tag tagname="React"  selectTag = {selectTag}selected = {checkTag('React')} />
           </div>
           <div>
             <select
