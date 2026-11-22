@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./TaskForm.css";
 import Tag from './Tag';
 
-const TaskForm = ({setTasks}) => {
+const TaskForm = ({ setTasks }) => {
 
   //one single handlefunction for multiple input fields
   const [taskData, setTaskData] = useState({
@@ -58,6 +58,7 @@ const TaskForm = ({setTasks}) => {
       <form onSubmit={handleSubmit}>
         <input
           name='task'
+          value={taskData.task}
           type='text'
           className='task_input'
           placeholder='Enter your task'
@@ -66,14 +67,15 @@ const TaskForm = ({setTasks}) => {
 
         <div className="task_From_bottom_line">
           <div>
-            <Tag tagname="HTML"  selectTag = {selectTag} selected = {checkTag('HTML')} />
-            <Tag tagname="CSS" selectTag = {selectTag} selected = {checkTag('CSS')} />
-            <Tag tagname="Javascript" selectTag = {selectTag} selected = {checkTag('Javascript')} />
-            <Tag tagname="React"  selectTag = {selectTag}selected = {checkTag('React')} />
+            <Tag tagname="HTML" selectTag={selectTag} selected={checkTag('HTML')} />
+            <Tag tagname="CSS" selectTag={selectTag} selected={checkTag('CSS')} />
+            <Tag tagname="Javascript" selectTag={selectTag} selected={checkTag('Javascript')} />
+            <Tag tagname="React" selectTag={selectTag} selected={checkTag('React')} />
           </div>
           <div>
             <select
               name='status'
+              value={taskData.status}
               className='task_status'
               onChange={HandleChange}>
               <option value="todo">TODO</option>
