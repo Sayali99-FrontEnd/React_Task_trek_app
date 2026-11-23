@@ -1,3 +1,5 @@
+/* DESKTOP - Your original design */
+
 .app_header {
     display: flex;
     align-items: center;
@@ -5,7 +7,7 @@
     border-bottom: 1px solid #dcdcdc;
 }
 
-.app_header>form {
+.app_header > form {
     width: 40%;
 }
 
@@ -17,9 +19,10 @@
     border: 1px solid #dfe3e6;
     padding: 8px 12px;
     width: 100%;
+    margin-block-end: 10px;
 }
 
-.task_inpu ::placeholder {
+.task_input::placeholder {
     color: #686868;
 }
 
@@ -28,9 +31,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
-
-
 .task_status {
     font-size: 16px;
     font-weight: 500;
@@ -51,6 +51,60 @@
     height: 35px;
     padding: 3px 13px;
     margin-left: 10px;
-    border: none;
     cursor: pointer;
 }
+
+
+/* TABLET */
+
+@media screen and (max-width: 900px) {
+    .app_header > form {
+        width: 70%;
+    }
+
+    .task_From_bottom_line {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 600px) {
+    .app_header {
+        padding: 15px;
+    }
+
+    .app_header > form {
+        width: 100%;
+    }
+
+    .task_input {
+        font-size: 16px;
+    }
+
+    .task_From_bottom_line {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .task_From_bottom_line > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .task_status {
+        flex: 1;
+    }
+
+    .task_submit {
+        margin-left: 0;
+    }
+}
+
+
+
